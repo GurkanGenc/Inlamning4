@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SharedUWPLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel.Channels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +24,21 @@ namespace UWP_IoT
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public Messages messages = new Messages();
+
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void btnSendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            messages.Add(new Msg(tbWriteMessage.Text, ""));
+        }
+
+        private void btnComboMessage_Click(object sender, RoutedEventArgs e)
+        {
+            messages.Add(new Msg("", cmbChooseMessage.SelectedItem.ToString()));
         }
     }
 }
