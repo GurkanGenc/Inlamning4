@@ -1,4 +1,6 @@
-﻿using SharedUWPLibrary.Models;
+﻿using Microsoft.Azure.Devices.Client;
+using SharedUWPLibrary.Models;
+using SharedUWPLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,8 +26,7 @@ namespace UWP_IoT
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public Messages messages = new Messages();
-
+        Messages messages = new Messages();
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,12 +34,16 @@ namespace UWP_IoT
 
         private void btnSendMessage_Click(object sender, RoutedEventArgs e)
         {
-            messages.Add(new Msg(tbWriteMessage.Text, ""));
+            var msg = new Msg(tbWriteMessage.Text);
+            messages.Add(msg);
+            ConsolApp.SendMessageToCloud(msg);
         }
 
         private void btnComboMessage_Click(object sender, RoutedEventArgs e)
         {
-            messages.Add(new Msg("", cmbChooseMessage.SelectedItem.ToString()));
+            var msg = new Msg(cmbChooseMessage.SelectedItem.ToString());
+            messages.Add(msg);
+            ConsolApp.SendMessageToCloud(msg);
         }
     }
 }

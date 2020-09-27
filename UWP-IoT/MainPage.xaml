@@ -5,13 +5,14 @@
     xmlns:local="using:UWP_IoT"
     
     xmlns:models="using:SharedUWPLibrary.Models"
+    xmlns:services="using:SharedUWPLibrary.Services"
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="30" BorderBrush="Green" BorderThickness="1">
+    <Grid Margin="30">
         <Grid.Resources>
             <models:ComboBoxMessages x:Key="comboboxmessages" />
         </Grid.Resources>
@@ -22,7 +23,7 @@
             <RowDefinition Height="*" /> <!--ListBox's row-->
         </Grid.RowDefinitions>
 
-            <Grid Margin="20" BorderThickness="1" BorderBrush="Red" Padding="20" HorizontalAlignment="Stretch"> <!--First Row's Grid structure-->
+            <Grid Margin="20" BorderThickness="1" BorderBrush="Blue" Padding="20" HorizontalAlignment="Stretch"> <!--First Row's Grid structure-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -51,8 +52,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding WrittenMessage}" FontSize="16" />
-                        <TextBlock Text="{Binding ChooseMessage}" FontSize="16" />
+                        <TextBlock Text="{Binding Message}" FontSize="16" VerticalAlignment="Center" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

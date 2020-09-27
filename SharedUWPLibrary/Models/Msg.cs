@@ -9,14 +9,11 @@ namespace SharedUWPLibrary.Models
 {
     public class Msg /*Originally Employee class*/
     {
-        public string WrittenMessage { get; set; }
-        public string ChooseMessage { get; set; }
+        public string Message { get; set; }
 
-
-        public Msg(string writtenmessage, string choosemessage)
+        public Msg(string message)
         {
-            WrittenMessage = writtenmessage;
-            ChooseMessage = choosemessage;
+            Message = message;
         }
     }
 }
