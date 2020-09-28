@@ -34,16 +34,14 @@ namespace UWP_IoT
 
         private void btnSendMessage_Click(object sender, RoutedEventArgs e)
         {
-            var msg = new Msg(tbWriteMessage.Text);
-            messages.Add(msg);
-            ConsolApp.SendMessageToCloud(msg);
+            messages.Add(new Msg(tbWriteMessage.Text));
+            ConsolApp.SendMessageToCloud();
         }
 
         private void btnComboMessage_Click(object sender, RoutedEventArgs e)
         {
-            var msg = new Msg(cmbChooseMessage.SelectedItem.ToString());
-            messages.Add(msg);
-            ConsolApp.SendMessageToCloud(msg);
+            messages.Add(new Msg(cmbChooseMessage.SelectedItem.ToString()));
+            ConsolApp.SendMessageToCloud();
         }
     }
 }

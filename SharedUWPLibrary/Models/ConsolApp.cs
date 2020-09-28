@@ -16,10 +16,10 @@ namespace SharedUWPLibrary.Models
         // And this is the IoT Device.
         private static readonly DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(_conn, TransportType.Mqtt);
 
-        public static void SendMessageToCloud(Msg msgs)
+        public static void SendMessageToCloud()
         {
             // We do like this instead creating an instance because the function is static.
-            DeviceUWPService.SendMessageAsync(deviceClient, msgs).GetAwaiter();
+            DeviceUWPService.SendMessageAsync(deviceClient).GetAwaiter();
 
             DeviceUWPService.ReceiveMessageAsync(deviceClient).GetAwaiter();
         }

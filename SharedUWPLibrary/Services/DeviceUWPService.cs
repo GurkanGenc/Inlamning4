@@ -13,18 +13,18 @@ namespace SharedUWPLibrary.Services
     public static class DeviceUWPService
     {
         // Device Client = IoT Device
-        public static async Task SendMessageAsync(DeviceClient deviceClient, Msg msgs)
+        public static async Task SendMessageAsync(DeviceClient deviceClient)
         {
+            var data = new Messages();
+
             // "Message" is coming from "Microsoft.Azure.Devices.Client". And with "Encoding" we are formattin the "message".
             // We also use "GetBytes" because computers can only understand of bytes.
             // json variable here is message that we want to send actually.
-            var json = JsonConvert.SerializeObject(msgs);
+            var json = JsonConvert.SerializeObject(data);
             var payload = new Message(Encoding.UTF8.GetBytes(json));
             await deviceClient.SendEventAsync(payload);
             // Now we have a function that send a message to the Cloud.
             // And now we need a "DeviceClient deviceClient" as an argument to pass.
-
-            Console.WriteLine($"Message sent: {json}"); // To see the message.
         } // Device specific
 
         // Device Client = IoT Device
